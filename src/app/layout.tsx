@@ -8,6 +8,9 @@ const font = DM_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "First Million",
   description: "Make your First Million",
+  icons: {
+    icon: "src/app/favicon.ico",
+  }
 };
 
 export default function RootLayout({
@@ -17,9 +20,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body className={font.className}>
         <ThemeProvider
           attribute="class"
