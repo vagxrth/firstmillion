@@ -15,6 +15,7 @@ import {
 import { menuOptions } from '@/lib/constants'
 import clsx from 'clsx'
 import { Database, GitBranch, GitCommit, LucideMousePointerClick } from 'lucide-react'
+import { ModeToggle } from '../global/ModeToggle'
 
 
 type Props = {}
@@ -99,7 +100,7 @@ const Sidebar = (props: Props) => {
         </div>
       </div>
       <div className="flex items-center justify-center flex-col gap-8">
-        {/* <ModeToggle /> */}
+        <ModeToggle />
       </div>
     </nav>
   )
