@@ -1,6 +1,8 @@
+'use client'
+
 import React from 'react'
 import UploadCare from './UploadCare'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { X } from 'lucide-react'
@@ -12,7 +14,7 @@ type Props = {
 }
 
 const ProfilePicture = ({ userImage, onDelete, onUpload }: Props) => {
-    const router = useRouter();
+    const router = useRouter()
     const onRemoveProfileImage = async () => {
         const response = await onDelete()
         if (response) {
