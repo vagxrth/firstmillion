@@ -8,26 +8,26 @@ import Image from 'next/image'
 import { X } from 'lucide-react'
 
 type Props = {
-    userImage: string | null
-    onDelete?: any
-    onUpload: any
+  userImage: string | null
+  onDelete?: any
+  onUpload: any
 }
 
 const ProfilePicture = ({ userImage, onDelete, onUpload }: Props) => {
-    const router = useRouter()
-    const onRemoveProfileImage = async () => {
-        const response = await onDelete()
-        if (response) {
-            router.refresh()
-        }
-      }
-    return (
-        <div className='flex flex-col'>
-            <p className='text-lg text-white'>
-                Profile Picture
-            </p>
-            <div className="flex h-[30vh] flex-col items-center justify-center">
-            {userImage ? (
+  const router = useRouter()
+
+  const onRemoveProfileImage = async () => {
+    const response = await onDelete()
+    if (response) {
+      router.refresh()
+    }
+  }
+
+  return (
+    <div className="flex flex-col">
+      <p className="text-lg text-white"> Profile Picture</p>
+      <div className="flex h-[30vh] flex-col items-center justify-center">
+        {userImage ? (
           <>
             <div className="relative h-full w-2/12">
               <Image
@@ -46,8 +46,8 @@ const ProfilePicture = ({ userImage, onDelete, onUpload }: Props) => {
         ) : (
           <UploadCare onUpload={onUpload} />
         )}
-            </div>
-        </div>
-    )
+      </div>
+    </div>
+  )
 }
 export default ProfilePicture

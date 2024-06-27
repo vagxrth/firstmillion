@@ -1,18 +1,21 @@
 'use client'
-
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as LR from '@uploadcare/blocks'
 import { useRouter } from 'next/navigation'
+import dynamic from "next/dynamic";
+import { FileUploaderRegular } from '@uploadcare/react-uploader';
+import '@uploadcare/react-uploader/core.css';
+
 
 type Props = {
-    onUpload?: any
+  onUpload: (e: string) => any
 }
 
 LR.registerBlocks(LR)
 
-const UploadCare = ({onUpload}: Props) => {
-    const router = useRouter();
-    const ctxProviderRef = useRef<
+const UploadCare = ({ onUpload }: Props) => {
+  const router = useRouter()
+  const ctxProviderRef = useRef<
     typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider
   >(null)
 
@@ -23,20 +26,19 @@ const UploadCare = ({onUpload}: Props) => {
         router.refresh()
       }
     }
-    ctxProviderRef.current.addEventListener('file-upload-success', handleUpload)
-  }, [])
+    if (ctxProviderRef.current) {
+      ctxProviderRef.current.addEventListener('file-upload-success', handleUpload)
+    }
+  }, [onUpload, router])
 
   return (
     <div>
-        <lr-config
+      <lr-config
         ctx-name="my-uploader"
-        pubkey="a9428ff5ff90ae7a64eb"
+        pubkey="03fb90abbbabfc5db66c"
       />
 
-      <lr-file-uploader-regular
-        ctx-name="my-uploader"
-        css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.35.2/web/lr-file-uploader-regular.min.css`}
-      />
+<FileUploaderRegular pubkey="03fb90abbbabfc5db66c" />
 
       <lr-upload-ctx-provider
         ctx-name="my-uploader"
@@ -46,4 +48,4 @@ const UploadCare = ({onUpload}: Props) => {
   )
 }
 
-export default UploadCare
+export default dynamic (() => Promise.resolve(UploadCare), {ssr: false})
