@@ -6,7 +6,7 @@ import React from 'react'
 type Props = {}
 
 const WorkflowButton = (props: Props) => {
-    const { setOpen, setClose } = useModal()
+    const { setOpen, setClose } = useModal();
 
     const handleClick = () => {
         setOpen(

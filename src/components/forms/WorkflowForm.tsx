@@ -1,4 +1,3 @@
-"use client"
 import { WorkflowFormSchema } from '@/lib/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
@@ -44,9 +43,16 @@ const WorkflowForm = ({ subTitle, title }: Props) => {
     })
 
     const isLoading = form.formState.isLoading
-    // const router = useRouter()
+    const router = useRouter();
 
-    const handleSubmit = () => {}
+    const handleSubmit = async (values: z.infer<typeof WorkflowFormSchema>) => {
+        const workflow = "workflow"
+        if (workflow) {
+        //   toast.message(workflow.message)
+          router.refresh()
+        }
+        setClose()
+      }
 
     return (
         <Card>
