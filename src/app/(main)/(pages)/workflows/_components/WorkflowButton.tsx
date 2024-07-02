@@ -1,3 +1,4 @@
+'use client'
 import WorkflowForm from '@/components/forms/WorkflowForm'
 import CustomModal from '@/components/global/CustomModal'
 import { useModal } from '@/providers/ModalProvider'
