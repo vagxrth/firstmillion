@@ -1,8 +1,8 @@
 'use client'
 import { EditorCanvasCardType, EditorNodeType } from '@/lib/types';
 import { useEditor } from '@/providers/EditorProvider';
-import React, { useCallback, useMemo, useState } from 'react'
-import ReactFlow, { Background, Connection, Controls, Edge, EdgeChange, MiniMap, NodeChange, ReactFlowInstance, addEdge } from 'reactflow';
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import ReactFlow, { Background, Connection, Controls, Edge, EdgeChange, MiniMap, NodeChange, ReactFlowInstance, addEdge, applyEdgeChanges, applyNodeChanges } from 'reactflow';
 import 'reactflow/dist/style.css';
 import EditorCanvasCardSingle from './EditorCanvasCardSingle';
 import {
@@ -14,6 +14,8 @@ import { toast } from 'sonner';
 import { usePathname } from 'next/navigation';
 import { v4 } from 'uuid';
 import { EditorCanvasDefaultCardTypes } from '@/lib/constants';
+import FlowInstance from './FlowInstance';
+import EditorCanvasSidebar from './EditorCanvasSidebar';
 
 
 type Props = {}
@@ -124,6 +126,10 @@ const EditorCanvas = (props: Props) => {
         })
     }
 
+    useEffect(() => {
+        dispatch({ type: 'LOAD_DATA', payload: { edges, elements: nodes } })
+      }, [nodes, edges])
+
     const nodeTypes = useMemo(
         () => ({
             Action: EditorCanvasCardSingle,
@@ -214,10 +220,9 @@ const EditorCanvas = (props: Props) => {
                         </svg>
                     </div>
                 ) : (
-                    // <FlowInstance edges={edges} nodes={nodes}>
-                    //     <EditorCanvasSidebar nodes={nodes} />
-                    // </FlowInstance>
-                    <></>
+                    <FlowInstance edges={edges} nodes={nodes}>
+                        <EditorCanvasSidebar nodes={nodes} />
+                    </FlowInstance>
                 )}
             </ResizablePanel>
         </ResizablePanelGroup>
