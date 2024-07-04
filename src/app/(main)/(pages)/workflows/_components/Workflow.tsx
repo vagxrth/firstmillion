@@ -39,14 +39,14 @@ const Workflow = ({ description, id, name, publish }: Props) => {
                             alt="Google Drive"
                             height={30}
                             width={30}
-                            className="object-contain"
+                            className="object-contain mr-1"
                         />
                         <Image
                             src="/notion.png"
                             alt="Google Drive"
                             height={30}
                             width={30}
-                            className="object-contain"
+                            className="object-contain mr-1"
                         />
                         <Image
                             src="/discord.png"
@@ -71,7 +71,7 @@ const Workflow = ({ description, id, name, publish }: Props) => {
                 </Label>
                 <Switch
                     id="airplane-mode"
-                    onClick={onPublishFlow}
+                    // onClick={onPublishFlow}
                     defaultChecked={publish!}
                 />
             </div>

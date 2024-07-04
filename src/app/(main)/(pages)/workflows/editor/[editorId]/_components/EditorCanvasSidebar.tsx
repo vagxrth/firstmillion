@@ -19,7 +19,7 @@ import { useNodeConnections } from '@/providers/ConnectionProvider'
 import { CONNECTIONS, EditorCanvasDefaultCardTypes } from '@/lib/constants'
 import EditorCanvasIconHelper from './EditorCanvasIconHelper'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { onConnections, onDragStart } from '@/lib/editorUtils'
+import { fetchBotSlackChannels, onConnections, onDragStart } from '@/lib/editorUtils'
 import RenderConnectionAccordion from './RenderConnectionAccordion'
 import RenderOutputAccordion from './RenderOutputAccordion'
 import { useFMStore } from '@/store'

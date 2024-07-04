@@ -6,6 +6,9 @@ import { toast } from 'sonner'
 import { ConnectionProviderProps } from '@/providers/ConnectionProvider'
 import { onCreateNodeTemplate } from '../../../_actions/WorkflowConnections'
 import { Option } from './ContentBasedOnTitle'
+import { postMessageToSlack } from '@/app/(main)/(pages)/connections/_actions/SlackConnection'
+import { onCreateNewPageInDatabase } from '@/app/(main)/(pages)/connections/_actions/NotionConnection'
+import { postContentToWebHook } from '@/app/(main)/(pages)/connections/_actions/DiscordConnection'
 
 
 type Props = {
