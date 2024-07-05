@@ -1,20 +1,10 @@
-import { ConnectionsProvider } from '@/providers/ConnectionProvider'
-import EditorProvider from '@/providers/EditorProvider'
 import React from 'react'
-import EditorCanvas from './[editorId]/_components/EditorCanvas'
 
 type Props = {}
 
 const Page = (props: Props) => {
-  return (
-    <div className="h-full">
-      <EditorProvider>
-        <ConnectionsProvider>
-           <EditorCanvas />
-        </ConnectionsProvider>
-      </EditorProvider>
-    </div>
-  )
+  //CHALLENGE: If the user tries to access this route you should send them to their first workflow they have or create one or you can have your own behavior.
+  return <div>Page</div>
 }
 
 export default Page
