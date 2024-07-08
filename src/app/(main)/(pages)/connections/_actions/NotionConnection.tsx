@@ -91,7 +91,7 @@ export const onCreateNewPageInDatabase = async (
       Name: [
         {
           text: {
-            content: "First Million",
+            content: content,
           },
         },
       ],
