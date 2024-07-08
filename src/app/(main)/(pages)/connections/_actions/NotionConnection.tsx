@@ -81,17 +81,17 @@ export const onCreateNewPageInDatabase = async (
     auth: accessToken,
   })
 
-  console.log(databaseId)
+  // console.log(databaseId)
   const response = await notion.pages.create({
     parent: {
       type: 'database_id',
       database_id: databaseId,
     },
     properties: {
-      name: [
+      Name: [
         {
           text: {
-            content: content,
+            content: "First Million",
           },
         },
       ],

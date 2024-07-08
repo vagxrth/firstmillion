@@ -16,6 +16,7 @@ import { v4 } from 'uuid';
 import { EditorCanvasDefaultCardTypes } from '@/lib/constants';
 import FlowInstance from './FlowInstance';
 import EditorCanvasSidebar from './EditorCanvasSidebar';
+import { onGetNodesEdges } from '../../../_actions/WorkflowConnections';
 
 
 type Props = {}
@@ -147,6 +148,21 @@ const EditorCanvas = (props: Props) => {
         }),
         []
     )
+
+    const onGetWorkFlow = async () => {
+        setIsWorkFlowLoading(true)
+        const response = await onGetNodesEdges(pathname.split('/').pop()!)
+        if (response) {
+          setEdges(JSON.parse(response.edges!))
+          setNodes(JSON.parse(response.nodes!))
+          setIsWorkFlowLoading(false)
+        }
+        setIsWorkFlowLoading(false)
+      }
+    
+      useEffect(() => {
+        onGetWorkFlow()
+      }, [])
 
     return (
         <ResizablePanelGroup direction="horizontal">
