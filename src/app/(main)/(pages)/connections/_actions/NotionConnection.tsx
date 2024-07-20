@@ -14,6 +14,7 @@ export const onNotionConnect = async (
 ) => {
   'use server'
   if (access_token) {
+    //check if notion is connected
     const notion_connected = await db.notion.findFirst({
       where: {
         accessToken: access_token,
@@ -28,6 +29,7 @@ export const onNotionConnect = async (
     })
 
     if (!notion_connected) {
+      //create connection
       await db.notion.create({
         data: {
           userId: id,
@@ -88,7 +90,7 @@ export const onCreateNewPageInDatabase = async (
       database_id: databaseId,
     },
     properties: {
-      Name: [
+      name: [
         {
           text: {
             content: content,
