@@ -38,6 +38,7 @@ const ActionButton = ({
         content: '',
       }))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodeConnection.discordNode])
 
   const onStoreNotionContent = useCallback(async () => {
@@ -57,6 +58,7 @@ const ActionButton = ({
         content: '',
       }))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodeConnection.notionNode])
 
   const onStoreSlackContent = useCallback(async () => {
@@ -75,6 +77,7 @@ const ActionButton = ({
     } else {
       toast.error(response.message)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodeConnection.slackNode, channels])
 
   const onCreateLocalNodeTempate = useCallback(async () => {
@@ -117,6 +120,7 @@ const ActionButton = ({
         toast.message(response)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodeConnection, channels])
 
   const renderActionButton = () => {

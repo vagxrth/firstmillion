@@ -37,6 +37,7 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
 
       useEffect(() => {
         form.reset({ name: user.name, email: user.email })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [user])
 
     return (
